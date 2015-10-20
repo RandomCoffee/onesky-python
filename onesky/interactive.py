@@ -4,10 +4,10 @@ import cmd
 import pprint
 import shlex
 import termcolor
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import sys
 
-import client
+from . import client
 
 
 # helper to simplify the boilerplate wrapping all the API calls with command
@@ -42,7 +42,7 @@ def make_cmd(name,
             while True:
                 self.stdout.write('Are you sure? (y/N): ')
                 self.stdout.flush()
-                choice = raw_input().lower()
+                choice = input().lower()
                 if choice == '' or choice == 'n' or choice == 'no':
                     self.stdout.write('Canceled.\n')
                     return
@@ -81,7 +81,7 @@ class Interpreter(cmd.Cmd):
         self.stdout.write('{} {}\n'.format(
             termcolor.colored(method, 'green'), url))
         self.stdout.write('params: {}\n'.format(
-            urllib.urlencode(params)
+            urllib.parse.urlencode(params)
         ))
 
     def print_response(self, status_code, response):
@@ -177,7 +177,7 @@ class Interpreter(cmd.Cmd):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print('Usage: {} <api_key> <api_secret>'.format(sys.argv[0]))
+        print(('Usage: {} <api_key> <api_secret>'.format(sys.argv[0])))
     else:
         interpreter = Interpreter(sys.argv[1], sys.argv[2])
         interpreter.cmdloop()

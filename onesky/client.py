@@ -44,7 +44,7 @@ class Client:
             # by rule, filter out None.  this makes things a bit easier for the
             # caller because he doesn't have to do the filtering for default
             # variables.
-            url_parameters = dict([(k, v) for k, v in parameters.items()
+            url_parameters = dict([(k, v) for k, v in list(parameters.items())
                                    if v is not None])
         url_parameters.update(self.create_auth_variables())
 

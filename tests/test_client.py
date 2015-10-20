@@ -62,7 +62,7 @@ class ClientTestCase(unittest.TestCase):
             # we copy the parameters because we modify them in some cases to
             # accurately represent what's expected to be returned, and don't
             # want to modify the caller's parameters in-place.
-            parameters = collections.OrderedDict(_parameters.items())
+            parameters = collections.OrderedDict(list(_parameters.items()))
 
             api_function = getattr(self.client, function_name)
             (status_code, result) = api_function(**parameters)
@@ -107,7 +107,7 @@ class ClientTestCase(unittest.TestCase):
                              expected_hash.hexdigest())
 
             # finally, each of the other parameters should be passed through.
-            for key, value in parameters.items():
+            for key, value in list(parameters.items()):
                 self.assertEqual(result_params.get(key), value)
 
             # and there should be nothing more in the url parameters than that
