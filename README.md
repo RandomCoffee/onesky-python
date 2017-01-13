@@ -12,7 +12,7 @@ suggestions there.  Perhaps throwing an exception for a bad http status?
 ## Installation
 Install using `pip`:
 ```
-$ pip install onesky-python
+$ pip install --upgrade https://github.com/nfsmaniac/onesky-python/archive/master.tar.gz
 ```
 
 Or, download the source code for `onesky-python`, and then run:
