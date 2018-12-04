@@ -11,7 +11,7 @@ setup(
     maintainer='Dan OBrien',
     maintainer_email='danob@jana.com',
     install_requires=[
-        'requests==2.11.1',
+        'requests==2.20.1',
         'termcolor==1.1.0'
     ],
     license='LICENSE.txt',
